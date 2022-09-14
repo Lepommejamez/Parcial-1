@@ -1,0 +1,33 @@
+@startuml
+class Librarian{
+  name: String
+  library: Library
+  +Book getBook(String name)
+  +void addBook(Book)
+  #void setBookStatus(bool status)
+}
+Librarian ..> Library
+class Library{
+   dict<String, Book> books
+}
+
+Library "1" *-- "many" Book: contains
+
+class Book{
+   name: String
+   isAvailable: bool
+
+}
+
+User -- Library
+
+class User{
+   name: String
+   library: Library
+   list<Book> borrowedBooks
+   void borrow(String name)
+   void returnBook(String name)
+   
+
+}
+@enduml
